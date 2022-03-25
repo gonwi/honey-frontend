@@ -5,6 +5,8 @@ import * as styles from './VeHoneyModal.css';
 const VeHoneyModal = () => {
   const [amount, setAmount] = useState<number>();
   const [vestingPeriod, setVestingPeriod] = useState('3 months');
+  const [inputValue, setInputValue] = useState<number>(0);
+
   const veHoneyRewardRate =
     vestingPeriod === '3 months'
       ? '2'
@@ -18,6 +20,11 @@ const VeHoneyModal = () => {
     if (!amount) return;
     console.log({ amount, vestingPeriod });
   };
+
+  const onInputChange = (event: any) => {
+    const { value } = event.target;
+    setInputValue(value);
+  }
 
   return (
     <Box width="96">
@@ -43,7 +50,7 @@ const VeHoneyModal = () => {
             width="3/4"
           >
             <Text variant="small" color="accent">
-              1 pHONEY = {veHoneyRewardRate} veHONEY
+              {inputValue} pHONEY = {inputValue * veHoneyRewardRate} veHONEY
             </Text>
           </Box>
           <Stack space="2">
@@ -81,9 +88,11 @@ const VeHoneyModal = () => {
             value={amount}
             type="number"
             label="Amount"
+            units='pHONEY'
             hideLabel
             placeholder="0"
-            onChange={event => setAmount(Number(event.target.value))}
+            onChange={onInputChange}
+            // onChange={event => setAmount(Number(event.target.value))}
           />
           <Button
             onClick={onSubmit}
