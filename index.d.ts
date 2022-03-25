@@ -1,6 +1,5 @@
 declare module '*.png';
 declare module '*.svg';
-
 type Creator = {
   address: string;
   verified: number;
