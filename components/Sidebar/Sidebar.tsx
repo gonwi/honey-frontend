@@ -14,7 +14,8 @@ import {
   IconHand,
   IconTokens,
   IconSplit,
-  vars
+  vars,
+  IconLink
 } from 'degen';
 import SidebarButton from '../SidebarButton';
 import * as styles from './Sidebar.css';
@@ -27,6 +28,8 @@ import { useRouter } from 'next/router';
 
 const whitePaperUrl =
   'https://4291845233-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FLxClA4ViEZ3CcRvINtyy%2Fuploads%2FsDr0JNKhTU5H9f9qkkX2%2Fhoney_whitepaper.pdf?alt=media&token=c9054e88-e3a5-43fd-a80f-ac55e2d49162';
+
+const governanceUrl = 'https://forum.honey.finance/';
 
 const mainLinks = [
   {
@@ -48,13 +51,6 @@ const mainLinks = [
     title: 'Farm',
     IconComp: IconTokens,
     key: 3
-  },
-  {
-    url: 'https://forum.honey.finance',
-    title: 'Governance',
-    comingSoon: false,
-    IconComp: IconHand,
-    key: 4
   }
 ];
 
@@ -68,6 +64,11 @@ const bottomLinks = [
     href: whitePaperUrl,
     title: 'Whitepaper',
     IconComp: IconDocuments
+  },
+  {
+    href: 'https://honeylend.netlify.app/farm',
+    title: 'Legacy website',
+    IconComp: IconLink
   }
 ];
 
@@ -127,6 +128,18 @@ const Sidebar = (props: SidebarProps) => {
               />
             );
           })}
+          <Button
+            as="a"
+            href={governanceUrl}
+            target="_blank"
+            variant="transparent"
+            prefix={<IconHand />}
+            size="small"
+            width="full"
+            justifyContent="flex-start"
+          >
+            Governance
+          </Button>
         </Stack>
         <Box
           borderTopWidth="0.5"
